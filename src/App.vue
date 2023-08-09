@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <img alt="photo" src="https://placehold.co/150x150" />
   <HelloWorld msg="Welcome to Your Vue.js App" />
 </template>
 
@@ -7,7 +7,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
-  name: "App",
+  name: "Animal Collector App",
   components: {
     HelloWorld,
   },
