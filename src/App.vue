@@ -1,15 +1,16 @@
 <template>
-  <img alt="photo" src="https://placehold.co/150x150" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <!-- <img alt="photo" src="https://placehold.co/150x150" />
+  <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+  <h1>Animal Collect App</h1>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import animalCollector from "./components/animalCollector.vue";
 
 export default {
-  name: "Animal Collector App",
+  name: "AnimalCollector",
   components: {
-    HelloWorld,
+    animalCollector,
   },
 };
 </script>
