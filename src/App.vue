@@ -2,13 +2,14 @@
   <img alt="photo" src="https://placehold.co/85x85" />
   <!--<HelloWorld msg="Welcome to Your Vue.js App" /> -->
   <h1>Animal Collect App</h1>
+  <animal-collector :collection="collection" @add-collection="addCollection" />
 </template>
 
 <script>
-import animalCollector from "./components/animalCollector.vue";
+import AnimalCollector from "./components/animalCollector.vue";
 
 export default {
-  name: "Album",
+  name: "App",
   data() {
     return {
       animalSelected: 0,
@@ -31,12 +32,12 @@ export default {
   },
 
   components: {
-    animalCollector,
+    AnimalCollector,
   },
   methods: {
     addCollection(id) {
-      this.collection++;
-      console.log([], "animal collected!");
+      this.animalSelectedAlbum.push(id);
+      console.log([], "animal collected!", id);
     },
   },
 };
