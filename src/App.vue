@@ -2,7 +2,7 @@
   <img alt="photo" src="https://placehold.co/85x85" />
   <!--<HelloWorld msg="Welcome to Your Vue.js App" /> -->
   <h1>Animal Collect App</h1>
-  <animal-collector :collection="collection" @add-collection="addCollection" />
+  <Animal-collector :data="animalData" @add-collection="addCollection" />
 </template>
 
 <script>
@@ -35,21 +35,31 @@ export default {
     AnimalCollector,
   },
   methods: {
-    addCollection(id) {
-      this.animalSelectedAlbum.push(id);
-      console.log([], "animal collected!", id);
+    isCollected(id) {
+      this.animalName++;
+      this.animalName[id] = id;
+      console.log([4], "animal collected!");
     },
+  },
+  addCourse(id) {
+    this.coursesSelected++;
+    this.coursesSelectedList[id] = id;
+    console.log(2, "course added!");
   },
 };
 </script>
 
 <style lang="scss">
-#app {
+#App {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#btn2 {
+  background: lightgreen;
+  color: darkolivegreen;
 }
 </style>
