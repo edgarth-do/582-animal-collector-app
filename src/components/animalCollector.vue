@@ -1,95 +1,71 @@
 <template>
-  <h2>Animal Collector app</h2>
-  <animalData
-    v-model:$data="defaultCollection"
-    :collection="defaultCollection"
-    :id="data.animalName"
-    :feature="data.feature"
-  ></animalData>
+  <!-- <h2>Animal Collector app</h2> -->
+  <div class="collection">
+    <div id="div1">
+      <h4>{{ collection.feature }}</h4>
+    </div>
+    <div id="div2">
+      <img :src="collection.photo" :alt="collection.animalName" />
+    </div>
+    <button
+      id="btn"
+      @click="addCollection(collection.id, collection.animalName)"
+    >
+      Collected
+    </button>
+    <div id="div4">
+      <p>{{ collection.habitat }}</p>
+    </div>
+    <div id="div5">
+      <h3>{{ collection.animalName }}</h3>
+    </div>
+    <div id="div6">
+      <p>{{ collection.description }}</p>
+    </div>
+    <div id="div7">
+      <p>{{ collection.age }}</p>
+    </div>
+    <div id="div8">
+      <p>{{ collection.weight }}</p>
+    </div>
+    <div id="div9">
+      <p>{{ collection.measures }}</p>
+    </div>
+    <button
+      id="btn2"
+      :class="{ isShared }"
+      v-if="!isShared"
+      @click="shared(collection.animalName)"
+    >
+      Shared!
+    </button>
+  </div>
 </template>
 
 <script>
-import AnimalData from "./animalData.vue";
+// import AnimalData from "./animalData.vue";
 
 export default {
   name: "animalCollector",
   props: {
     collection: {
-      type: Array,
-      default() {
-        return [];
-      },
-
-      id: {
-        type: Number,
-        required: true,
-      },
-
-      feature: {
-        type: String,
-        required: true,
-      },
-
-      photo: {
-        type: Image,
-        required: true,
-      },
-      habitat: {
-        type: String,
-        required: true,
-      },
-
-      animalName: {
-        type: String,
-        required: true,
-      },
-
-      description: {
-        type: String,
-        required: true,
-      },
-
-      age: {
-        type: String,
-        required: true,
-      },
-
-      weight: {
-        type: String,
-        required: true,
-      },
-
-      measures: {
-        type: String,
-        required: true,
-      },
+      type: Object,
+      required: true,
     },
-  },
-  components: {
-    AnimalData,
   },
   data() {
     return {
-      defaultCollection: [
-        {
-          id: 1,
-          feature: "feature",
-          photo: "https://placehold.co/185*185",
-          habitat: "habitat",
-          animalName: "animalName",
-          description:
-            "Neque porro quisquam est qui dolorem ipsumquia dolor sit amet, consectetur, adipisci velit.",
-          age: 0,
-          weight: "weight",
-          measures: "measures",
-          share: "Share",
-        },
-      ],
+      isShared: false,
     };
   },
   methods: {
     addCollection(id, animalName) {
+      this.$emit("addCollection", id);
       console.log("Already collected...", id, animalName);
+    },
+    share(animalName) {
+      this.isShared = true;
+      this.$emit("share", animalName);
     },
   },
 };
@@ -110,7 +86,7 @@ export default {
 #div2 {
   grid-area: 1 / 2 / 3 / 4;
 }
-#btn3 {
+#btn {
   grid-area: 1 / 4 / 2 / 5;
 }
 #div4 {
