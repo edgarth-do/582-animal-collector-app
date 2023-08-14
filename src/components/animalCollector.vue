@@ -11,7 +11,7 @@
       id="btn"
       @click="addCollection(collection.id, collection.animalName)"
     >
-      Collected
+      Collect it!
     </button>
     <div id="div4">
       <p>{{ collection.habitat }}</p>
@@ -37,7 +37,7 @@
       v-if="!isShared"
       @click="shared(collection.animalName)"
     >
-      Shared!
+      Share
     </button>
   </div>
 </template>
@@ -78,6 +78,11 @@ export default {
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 12px;
   grid-row-gap: 12px;
+  margin: 0 auto;
+  padding: 15px;
+  p {
+    font-family: "Aleo", serif;
+  }
 }
 
 #div1 {

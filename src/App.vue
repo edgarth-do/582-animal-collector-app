@@ -41,7 +41,7 @@ export default {
           feature: "Fish",
           photo: "https://placehold.co/95",
           habitat: "Sea",
-          animalName: "Angel",
+          animalName: "Angel fish",
           description:
             "Neque porro quisquam est qui dolorem ipsumquia dolor sit amet, consectetur, adipisci velit.",
           age: "3",
@@ -78,27 +78,81 @@ export default {
 </script>
 
 <style lang="scss">
-#App {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@media only screen and (max-width: 490px) {
   .container {
     width: 86%;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1em;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    border: 3px solid rgba(240, 128, 128, 0.5);
+    overflow: hidden;
+  }
+
+  #App {
+    background-image: url(assets/tall-back-desktop.png);
+    background-position: center;
+    background-size: cover;
+    font-family: "Marcellus", serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px #2c3e50;
+    margin-top: 60px;
+
+    .container {
+      width: 86%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2em;
+      justify-content: center;
+      align-items: center;
+      border-radius: 9px;
+      border: 3px solid rgba(240, 128, 128, 0.5);
+    }
+  }
+
+  .collection {
+    width: 86%;
+    padding: 12px;
+    background: rgba(107, 54, 47, 0.5);
+  }
+
+  #div2 img {
+    border-radius: 50px;
+  }
+
+  #btn,
+  #btn2 {
+    border-radius: 9px;
+    padding: 7px 12px;
+    &:hover {
+      box-shadow: 1px 1px 4px #f9fadf;
+    }
+  }
+
+  #btn {
+    border: 1px solid rgb(185, 79, 17);
+    background: rgb(238, 205, 144);
+    color: rgb(107, 54, 47);
+  }
+
+  #btn2 {
+    border: 1px solid darkolivegreen;
+    background: lightgreen;
+    color: darkolivegreen;
   }
 }
-
-.collection {
-  background: rgb(145, 155, 155);
-}
-
-#btn2 {
-  background: lightgreen;
-  color: darkolivegreen;
+@media screen and (max-width: 1940px) {
+  #App {
+    background-image: url(assets/full-back-desktop.png);
+    background-position: center;
+    background-size: cover;
+  }
 }
 </style>
