@@ -6,11 +6,9 @@
     <div id="div2">
       <img :src="collection.photo" :alt="collection.animalName" />
     </div>
-    <button
-      id="btn"
-      @click="addCollection(collection.id, collection.animalName)"
-    >
-      Collected!
+    <button id="btn" @click="collect(collection.id, collection.animalName)">
+      <img v-if="!collect" src="./assets/collen.png" alt="Collected" />
+      <img v-else src="./assets/collec.png" alt="Replace" />
     </button>
     <div id="div4">
       <p>{{ collection.habitat }}</p>
@@ -32,11 +30,11 @@
     </div>
     <button
       id="btn2"
-      :class="{ isShared }"
-      v-if="!isShared"
+      :class="{ isShare }"
+      v-if="!isShare"
       @click="share(collection.animalName)"
     >
-      Shared!
+      <img src="./assets/instagram.png" alt="Share" />
     </button>
   </div>
 </template>
@@ -53,16 +51,18 @@ export default {
 
   data() {
     return {
-      isShared: false,
+      collect: false,
+      share: false,
     };
   },
 
   methods: {
-    addCollection(id, animalName) {
+    isCollect(id, animalName) {
+      this.collect = !this.collect;
       this.$emit("addCollection", id);
       console.log("Already collected...", id, animalName);
     },
-    share(animalName) {
+    isShare(animalName) {
       this.isShared = true;
       this.$emit("share", animalName);
     },

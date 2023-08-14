@@ -7,11 +7,9 @@
     <div id="div2">
       <img :src="collection.photo" :alt="collection.animalName" />
     </div>
-    <button
-      id="btn"
-      @click="addCollection(collection.id, collection.animalName)"
-    >
-      Collect it!
+    <button id="btn" @click="collect(collection.id, collection.animalName)">
+      <img v-if="!collect" src="./assets/collen.png" alt="Collected" />
+      <img v-else src="./assets/collec.png" alt="Replace" />
     </button>
     <div id="div4">
       <p>{{ collection.habitat }}</p>
@@ -37,14 +35,12 @@
       v-if="!isShared"
       @click="shared(collection.animalName)"
     >
-      Share
+      <img src="./assets/instagram.png" alt="Share" />
     </button>
   </div>
 </template>
 
 <script>
-// import AnimalData from "./animalData.vue";
-
 export default {
   name: "animalCollector",
   props: {
@@ -55,15 +51,17 @@ export default {
   },
   data() {
     return {
-      isShared: false,
+      collect: false,
+      share: false,
     };
   },
   methods: {
-    addCollection(id, animalName) {
+    isCollect(id, animalName) {
+      this.collect = !this.collect;
       this.$emit("addCollection", id);
       console.log("Already collected...", id, animalName);
     },
-    share(animalName) {
+    isShare(animalName) {
       this.isShared = true;
       this.$emit("share", animalName);
     },
