@@ -1,40 +1,35 @@
 <template>
   <div class="animalCollector">
     <div id="div1">
-      <h4>{{ collection.feature }}</h4>
+      <h3>{{ collection.feature }}</h3>
     </div>
     <div id="div2">
       <img :src="collection.photo" :alt="collection.animalName" />
     </div>
-    <button id="btn" @click="collect(collection.id, collection.animalName)">
-      <img v-if="!collect" src="./assets/collen.png" alt="Collected" />
-      <img v-else src="./assets/collec.png" alt="Replace" />
+    <button id="btn" @click="isCollect(collection.id, collection.animalName)">
+      <img v-if="!collect" src="../assets/collen.png" alt="Collected" />
+      <img v-else src="../assets/collec.png" alt="Replace" />
     </button>
     <div id="div4">
       <p>{{ collection.habitat }}</p>
     </div>
     <div id="div5">
-      <p>{{ collection.animalName }}</p>
+      <h2>{{ collection.animalName }}</h2>
     </div>
     <div id="div6">
-      <h3>{{ collection.description }}</h3>
+      <p>{{ collection.description }}</p>
     </div>
     <div id="div7">
-      <p>{{ collection.age }}</p>
+      <h2>{{ collection.age }}</h2>
     </div>
     <div id="div8">
-      <p>{{ collection.weight }}</p>
+      <h3>{{ collection.weight }}</h3>
     </div>
     <div id="div9">
-      <p>{{ collection.measures }}</p>
+      <h4>{{ collection.measures }}</h4>
     </div>
-    <button
-      id="btn2"
-      :class="{ isShare }"
-      v-if="!isShare"
-      @click="share(collection.animalName)"
-    >
-      <img src="./assets/instagram.png" alt="Share" />
+    <button id="btn2" class="share-button" @click="shareOnInstagram">
+      <img src="../assets/instagram.png" alt="Share" />
     </button>
   </div>
 </template>
@@ -60,23 +55,47 @@ export default {
     isCollect(id, animalName) {
       this.collect = !this.collect;
       this.$emit("addCollection", id);
-      console.log("Already collected...", id, animalName);
+      console.log("Already collected...", animalName);
     },
-    isShare(animalName) {
-      this.isShared = true;
-      this.$emit("share", animalName);
+    shareOnInstagram() {
+      const instagramUrl = `https://www.instagram.com`;
+      window.open(instagramUrl, "_blank");
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
-.collection {
+.animalCollector {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 12px;
   grid-row-gap: 12px;
+  margin: 0 auto;
+  padding: 15px;
+
+  p {
+    font-family: "Aleo", serif;
+  }
+
+  #btn,
+  #btn2 {
+    background: none;
+    border: none;
+    color: none;
+  }
+
+  #btn img,
+  #btn2 img {
+    width: 45px;
+    border-radius: 9px;
+
+    &:hover {
+      width: 45px;
+      box-shadow: 1px 1px 4px #f9fadf;
+    }
+  }
 }
 
 #div1 {
@@ -84,7 +103,11 @@ export default {
 }
 #div2 {
   grid-area: 1 / 2 / 3 / 4;
+  img {
+    border-radius: 50px;
+  }
 }
+
 #btn {
   grid-area: 1 / 4 / 2 / 5;
 }
