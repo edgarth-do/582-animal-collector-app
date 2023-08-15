@@ -59,6 +59,42 @@ export default {
           weight: "2kg",
           measures: "32cm",
         },
+        {
+          id: 4,
+          feature: "Domestic",
+          photo: "https://placehold.co/95",
+          habitat: "Cities",
+          animalName: "Cat",
+          description:
+            "Neque porro quisquam est qui dolorem ipsumquia dolor sit amet, consectetur, adipisci velit.",
+          age: "7",
+          weight: "4kg",
+          measures: "50cm",
+        },
+        {
+          id: 5,
+          feature: "Pachyderm",
+          photo: "https://placehold.co/95",
+          habitat: "Jungle",
+          animalName: "Elephant",
+          description:
+            "Neque porro quisquam est qui dolorem ipsumquia dolor sit amet, consectetur, adipisci velit.",
+          age: "60",
+          weight: "3400kg",
+          measures: "3m",
+        },
+        {
+          id: 6,
+          feature: "Amphibian",
+          photo: "https://placehold.co/95",
+          habitat: "Stagnant water",
+          animalName: "Frog common",
+          description:
+            "Neque porro quisquam est qui dolorem ipsumquia dolor sit amet, consectetur, adipisci velit.",
+          age: "4",
+          weight: "150g",
+          measures: "28cm",
+        },
       ],
     };
   },
